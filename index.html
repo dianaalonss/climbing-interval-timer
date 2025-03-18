@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temporizador de intervalos</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <h1>Temporizador de intervalos</h1>
+
+  <div id="setup">
+    <div class="input-group">
+      <label>Tiempo de Preparación:</label>
+      <div class="inputs">
+        <input type="number" id="prepMin" placeholder="mm" min="0"> :
+        <input type="number" id="prepSec" placeholder="ss" min="0" max="59"> :
+        <input type="number" id="prepMs" placeholder="ms" min="0" max="999">
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label>Tiempo de Entrenamiento:</label>
+      <div class="inputs">
+        <input type="number" id="workMin" placeholder="mm" min="0"> :
+        <input type="number" id="workSec" placeholder="ss" min="0" max="59"> :
+        <input type="number" id="workMs" placeholder="ms" min="0" max="999">
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label>Tiempo de Descanso:</label>
+      <div class="inputs">
+        <input type="number" id="restMin" placeholder="mm" min="0"> :
+        <input type="number" id="restSec" placeholder="ss" min="0" max="59"> :
+        <input type="number" id="restMs" placeholder="ms" min="0" max="999">
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label>Vuelta a la calma:</label>
+      <div class="inputs">
+        <input type="number" id="cooldownMin" placeholder="mm" min="0"> :
+        <input type="number" id="cooldownSec" placeholder="ss" min="0" max="59"> :
+        <input type="number" id="calmMs" placeholder="ms" min="0" max="999">
+      </div>
+    </div>
+    <br>
+    <div class="input-group">
+      <label>Número de ciclos (0 para infinito):</label>
+      <div class="inputs">
+        <input type="number" id="cycles" min="0" value="0">
+      </div>
+    </div>
+    <br>
+    <div class="input-group">
+      <button class="button" onclick="startTimer()">
+        Iniciar
+        <div class="icon">
+          <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+              fill="currentColor"></path>
+          </svg>
+        </div>
+      </button>
+    </div>
+
+    <!-- <button onclick="startTimer()">Iniciar</button> -->
+  </div>
+
+  <div id="running" class="hidden">
+    <h2 id="status">Preparación</h2>
+    <h1 id="timer">00:00:000</h1>
+    <p>Ciclos completados:</p>
+    <h1 id="cycleCount">0</h1>
+    <div class="input-group">
+      <button class="button" onclick="stopTimer()">
+        Parar
+        <div class="icon">
+          <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+              fill="currentColor"></path>
+          </svg>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <div id="paused" class="hidden">
+    <h2>Entrenamiento Pausado</h2>
+    <p>Ciclos completados:</p>
+    <h1 id="pausedCycleCount">0</h1>
+    <div class="input-group">
+      <button class="button" onclick="resumeTimer()">
+        <div class="icon">
+          <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+            style="transform: rotate(180deg);">
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+              fill="currentColor"></path>
+          </svg>
+        </div>
+        Continuar
+      </button>
+    </div>
+
+    <div class="input-group">
+      <button class="button" onclick="resetTimer()">
+        Reiniciar
+        <div class="icon">
+          <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+              fill="currentColor"></path>
+          </svg>
+        </div>
+      </button>
+    </div>
+
+  </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
